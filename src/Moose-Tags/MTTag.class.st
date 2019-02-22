@@ -2,10 +2,11 @@ Class {
 	#name : #MTTag,
 	#superclass : #MooseEntity,
 	#instVars : [
+		'#childrenTags => FMMany type: #MTTag opposite: #parentTag',
 		'#color',
 		'#name',
-		'#parentTag => FMOne type: #MTTag opposite: #childrenTag',
-		'#childrenTag => FMMany type: #MTTag opposite: #parentTag'
+		'#parentTag => FMOne type: #MTTag opposite: #childrenTags',
+		'#taggedEntities => FMMany type: #MooseEntity opposite: #tags'
 	],
 	#category : #'Moose-Tags-Entities'
 }
@@ -23,7 +24,7 @@ MTTag class >> annotation [
 MTTag class >> generatedSlotNames [
 	<generated>
 	'MTTag class>>#generatedSlotNames'.
-	^ #(childrenTag color name parentTag)
+	^ #(childrenTags color name parentTag)
 ]
 
 { #category : #generator }
@@ -63,27 +64,27 @@ MTTag >> belongsTo: anObject [
 ]
 
 { #category : #accessing }
-MTTag >> childrenTag [
+MTTag >> childrenTags [
 
 	<generated>
-	^ childrenTag
+	^ childrenTags
 ]
 
 { #category : #accessing }
-MTTag >> childrenTag: anObject [
+MTTag >> childrenTags: anObject [
 
 	<generated>
-	childrenTag value: anObject
+	childrenTags value: anObject
 
 ]
 
 { #category : #navigation }
-MTTag >> childrenTagGroup [
+MTTag >> childrenTagsGroup [
 
 	<generated>
-	<navigation: 'ChildrenTag'>
+	<navigation: 'ChildrenTags'>
 	^ MooseGroup
-			withAll: (self childrenTag asSet)
+			withAll: (self childrenTags asSet)
 ]
 
 { #category : #accessing }
@@ -142,4 +143,14 @@ MTTag >> parentTagGroup [
 	<navigation: 'ParentTag'>
 	^ MooseGroup
 			with: (self parentTag)
+]
+
+{ #category : #accessing }
+MTTag >> taggedEntities [
+	^ taggedEntities
+]
+
+{ #category : #accessing }
+MTTag >> taggedEntities: anObject [
+	taggedEntities := anObject
 ]

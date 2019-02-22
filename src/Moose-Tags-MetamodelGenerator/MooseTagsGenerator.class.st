@@ -41,5 +41,5 @@ MooseTagsGenerator >> defineProperties [
 { #category : #definition }
 MooseTagsGenerator >> defineRelations [
 	super defineRelations.
-	(tag property: #parentTag) *-<> (tag property: #childrenTag)
+	(tag property: #parentTag) *-<> (tag property: #childrenTags)
 ]
