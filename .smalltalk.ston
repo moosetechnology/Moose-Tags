@@ -1,0 +1,10 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'Moose-Tags',
+      #directory : 'src',
+      #load : [ 'tests' ],
+      #platforms : [ #pharo ]
+    }
+  ]
+}
